@@ -37,8 +37,10 @@ class Name(Field):
 
 class Phone(Field):
     def is_valid(self, value):
-        
-        return isinstance(value, str) and (len(value) == 10 and value.isdigit())
+        if  (len(value) == 10 and value.isdigit()):
+            return value
+        else :
+            raise ValueError(f"Invalid phone number format phone for '{value}'")
 
 class Birthday(Field):
     def is_valid(self, value):        

@@ -59,11 +59,15 @@ class ContactAssistant:
     def change_contact(self, name, phone):
         try:
             record = self.address_book.find(name)
-            if record and phone:
-                record.phones = []  
-                record.add_phone(phone)
-                self.save_data()  
-                return f"{self.YLLOW_TEXT}Номер телефону успішно змінено!!!{self.PISKAZKA_SHOW_ALL}"
+            if record :
+                if len(phone) == 10 and phone.isdigit():
+                    print(phone)
+                    record.phones = []  
+                    record.add_phone(phone)
+                    self.save_data()  
+                    return f"{self.YLLOW_TEXT}Номер телефону успішно змінено!!!{self.PISKAZKA_SHOW_ALL}"
+                else:
+                    raise ValueError(f"{self.YLLOW_TEXT}Номер може містити тільки 10 цифри !!!{self.BIRUZA_TEXT}\n# Приклад - 0931245891")
             else:
                 raise IndexError(f"{self.YLLOW_TEXT}Такого іменні не знайдено у вашій телефоній книзі !!!{self.DEFALUT_TEXT}{self.PISKAZKA_SHOW_ALL} ")
         except (ValueError, IndexError) as e:
