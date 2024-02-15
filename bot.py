@@ -91,7 +91,7 @@ class ContactAssistant:
             result = f'{self.GREEN_TEXT}{"Name":<10}  {"Phone":<12}{self.YLLOW_TEXT}\n'
             for record in records:
                 phone_numbers = ', '.join(str(phone) for phone in record.phones)
-                result += f"{f"{record.name}":<10} {phone_numbers}\n" 
+                result += f"{record.name:<10} {phone_numbers}\n" 
             return result.strip()
 
 
@@ -231,7 +231,7 @@ class Bot:
 
         while True:
             try:
-                user_input = input(f"{self.PURPURE_TEXT}ВВедіть команду>>{self.DEFALUT_TEXT}").lower().strip()
+                user_input = input(f"{self.PURPURE_TEXT}ВВедіть команду>> {self.DEFALUT_TEXT}").lower().strip()
                 result = command_handler.process_input(user_input)
 
                 if result is None:
