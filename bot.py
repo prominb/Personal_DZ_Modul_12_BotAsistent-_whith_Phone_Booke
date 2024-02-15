@@ -19,7 +19,7 @@ class ContactAssistant:
     
     def __init__(self):
         self.address_book = AddressBook()
-        self.file_path = "contacts.json"
+        self.file_path = "contacts1.json"
        
         if os.path.exists(self.file_path):
             self.load_data()
